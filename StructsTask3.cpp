@@ -45,6 +45,8 @@ struct Fruit {
 };
 
 void CreateFruits(Fruit* arr[], const size_t& s);
+string ColorToString(color a);
+string TypeCycleToString(Yn a);
 
 
 int main()
@@ -55,6 +57,15 @@ int main()
     cin >> size;
     Fruit** fruitsArray = new Fruit*[size];
     CreateFruits(fruitsArray, size);
+
+    for (size_t i = 0; i < size; ++i) {
+        cout << "Name: " << fruitsArray[i]->name << "\n";
+        cout << "Color: " << ColorToString(fruitsArray[i]->cl) << "\n";
+        cout << "Annual: " << TypeCycleToString(fruitsArray[i]->annual) << "\n";
+        cout << "Perennial: " << TypeCycleToString(fruitsArray[i]->perennial) << "\n";
+        cout << "Tropical: " << TypeCycleToString(fruitsArray[i]->tropical) << "\n";
+        cout << "\n";
+    }
 
 
 }
@@ -88,7 +99,7 @@ int main()
                  break;
              }
              else {
-                 cout << "\nYou must choose an option between 0 and 4!\n";
+                 cout << "\nYou must choose an option between 1 and 5!\n";
              }
 
          }
@@ -142,7 +153,7 @@ int main()
              if ((tropicalType - 1) == 0 || (tropicalType - 1) == 1) {
                  break;
              }
-             cout << "\nChoose between 0 and 1!\n";
+             cout << "\nYou have to choose between option 1 or 2!\n";
 
          }
          if (tropicalType == 0) {
@@ -153,3 +164,22 @@ int main()
      }
 
 }
+
+ string ColorToString(color a) {
+     switch (a) {
+     case color::Brown: return "Brown";
+     case color::Green: return "Green";
+     case color::Orange: return "Orange";
+     case color::Red: return "Red";
+     case color::Yellow: return "Yellow";
+     default: return "Unknown";
+     }
+ }
+
+ string TypeCycleToString(Yn a) {
+     switch (a) {
+     case Yn::Yes: return "Yes";
+     case Yn::No: return "No";
+     default: return "Unknown";
+     }
+ }
